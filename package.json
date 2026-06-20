@@ -1,0 +1,38 @@
+{
+  "name": "pinctadabot",
+  "version": "0.0.2",
+  "description": "Telegram bot on Nodejs for managing OpenVPN-server on Ubuntu.",
+  "type": "module",
+  "main": "index.ts",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node index.ts",
+    "start": "node index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felixprescott/pinctadabot.git"
+  },
+  "author": "Felix Prescott",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felixprescott/pinctadabot/issues"
+  },
+  "homepage": "https://github.com/felixprescott/pinctadabot#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "@types/node": "^24.0.10",
+    "eslint": "^9.30.1",
+    "eslint-config-prettier": "^10.1.5",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.1"
+  },
+  "dependencies": {
+    "grammy": "^1.44.0"
+  }
+}
