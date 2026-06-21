@@ -1,8 +1,11 @@
-import type { Bot } from 'grammy';
+import type { Bot, Context } from 'grammy';
 
-export function setupGracefulShutdown(bot: Bot) {
+/**
+ * Register process signal handlers for graceful bot shutdown.
+ */
+export function setupGracefulShutdown<C extends Context>(bot: Bot<C>) {
   const stop = async (signal: string) => {
-    console.log(`Received ${signal}, stopping bot...`);
+    console.log(`received ${signal}, stopping bot...`);
     await bot.stop();
     process.exit(0);
   };
