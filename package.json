@@ -1,6 +1,6 @@
 {
   "name": "pinctadabot",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Telegram bot on Nodejs for managing OpenVPN-server on Ubuntu.",
   "type": "module",
   "main": "index.ts",
