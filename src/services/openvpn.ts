@@ -5,15 +5,9 @@ import { promisify } from 'node:util';
 
 const OPENVPN_USERS_DIR = '/root/openvpn';
 const OPENVPN_CREATE_SCRIPT = '/root/openvpn/create.sh';
+const OPENVPN_DELETE_SCRIPT = '/root/openvpn/delete.sh';
 
 const execFileAsync = promisify(execFile);
-
-/**
- * Check whether the provided OpenVPN user name is valid.
- */
-function isValidOpenVpnUserName(userName: string): boolean {
-  return /^[a-zA-Z0-9_-]+$/.test(userName);
-}
 
 /**
  * Build the expected .ovpn file path for a user.
@@ -38,10 +32,6 @@ export async function listOpenVpnUsers(): Promise<string[]> {
  * Create a new OpenVPN user by calling the shell script.
  */
 export async function createOpenVpnUser(userName: string): Promise<string> {
-  if (!isValidOpenVpnUserName(userName)) {
-    throw new Error('invalid openvpn user name');
-  }
-
   await execFileAsync(OPENVPN_CREATE_SCRIPT, [userName]);
 
   const filePath = getOpenVpnUserFilePath(userName);
@@ -54,12 +44,15 @@ export async function createOpenVpnUser(userName: string): Promise<string> {
  * Get an existing OpenVPN config file path for a user.
  */
 export async function getOpenVpnUserConfigPath(userName: string): Promise<string> {
-  if (!isValidOpenVpnUserName(userName)) {
-    throw new Error('invalid openvpn user name');
-  }
-
   const filePath = getOpenVpnUserFilePath(userName);
   await access(filePath);
 
   return filePath;
+}
+
+/**
+ * Delete an existing OpenVPN user by calling the shell script.
+ */
+export async function deleteOpenVpnUser(userName: string): Promise<void> {
+  await execFileAsync(OPENVPN_DELETE_SCRIPT, [userName]);
 }

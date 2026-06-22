@@ -38,9 +38,8 @@ export function registerAddCommand(bot: Bot<BotContext>) {
     ctx.session.pendingAction = 'idle';
 
     try {
+      await ctx.reply(`please wait for file...`);
       const filePath = await createOpenVpnUser(text);
-
-      await ctx.reply(`user "${text}" created`);
 
       // Send the generated OpenVPN config file back to the chat.
       await ctx.replyWithDocument(new InputFile(filePath, `${text}.ovpn`));

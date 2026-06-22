@@ -9,5 +9,6 @@ export async function registerBotCommands<C extends Context>(bot: Bot<C>) {
     { command: 'list', description: 'show openvpn users' },
     { command: 'add', description: 'add openvpn user' },
     { command: 'get', description: 'get openvpn config file' },
+    { command: 'del', description: 'delete openvpn user' },
   ]);
 }
